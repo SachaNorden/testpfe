@@ -30,6 +30,13 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - script: |
+        npm install
+      displayName: 'npm install'
+
+    - script: |
+        npm run build
+      displayName: 'npm build'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -64,8 +71,4 @@ stages:
               WebAppName: $(webAppName)
               packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               RuntimeStack: 'NODE|18-lts'
-              StartupCommand: 'npm run start'
-              ScriptType: 'Inline Script'
-              InlineScript: |
-                npm install
-                npm run build --if-present
+              StartupCommand: 'pm2 serve /home/site/wwwroot/build --no-daemon --spa'
