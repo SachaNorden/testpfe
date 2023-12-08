@@ -12,10 +12,10 @@ variables:
   azureSubscription: 'b1546803-beea-4fce-b5ae-948f3ca5acd9'
 
   # Web app name
-  webAppName: 'testpfe'
+  webAppName: 'pfe2023Frontend-dev'
 
   # Environment name
-  environmentName: 'testpfe'
+  environmentName: 'pfe2023Frontend-dev'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
